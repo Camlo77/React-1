@@ -1,16 +1,27 @@
-# React + Vite
+# Zelda Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tienda web tematica de The Legend of Zelda, desarrollada con React y Bootstrap como parte de mi practica y proyectos del bootcamp.
 
-Currently, two official plugins are available:
+## Screenshot
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Zelda Store Screenshot](./src/assets/screenshot.png)
 
-## React Compiler
+## Descripcion
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Zelda Store es una landing page de e-commerce ficticia donde se muestran distintos juegos de la saga Zelda mediante cards con imagen, nombre, caracteristicas y precio. Incluye navegacion superior, seccion principal con header destacado, catalogo de productos y pie de pagina.
 
-## Expanding the ESLint configuration
+## Tecnologias utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- Bootstrap 5
+- CSS3
+- JavaScript (ES6+)
+
+## Funcionalidades
+
+- Navbar responsive con opciones de navegacion (Home, Login/Register o Logout/Profile segun estado de sesion, y Total de compra)
+- Header con imagen destacada y texto de bienvenida
+- Catalogo de juegos mediante componente reutilizable CardJuego, con props para imagen, nombre, caracteristicas y precio
+- Footer con informacion de derechos reservados
+- Formateo de precios con separador de miles
