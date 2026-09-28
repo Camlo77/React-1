@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ total }) {
   const [token, setToken] = useState(false);
-  const total = 15000;
 
   return (
     <nav className="navbar">
@@ -23,10 +22,10 @@ function Navbar() {
                 className="btn btn-outline-secondary"
                 onClick={() => setToken(false)}
               >
-                <i class="fa-solid fa-lock"></i> Logout
+                <i className="fa-solid fa-lock"></i> Logout
               </button>
               <a className="btn btn-outline-secondary" href="#">
-                <i class="fa-solid fa-user-lock"></i> Perfil
+                <i className="fa-solid fa-user-lock"></i> Perfil
               </a>
             </>
           ) : (
@@ -35,17 +34,17 @@ function Navbar() {
                 className="btn btn-outline-secondary"
                 onClick={() => setToken(true)}
               >
-                <i class="fa-solid fa-lock-open"></i> Login
+                <i className="fa-solid fa-lock-open"></i> Login
               </button>
               <a className="btn btn-outline-secondary" href="#">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i> Register
+                <i className="fa-solid fa-arrow-right-to-bracket"></i> Register
               </a>
             </>
           )}
         </div>
 
         <button className="btn btn-outline-success ms-auto" type="button">
-          <i class="fa-solid fa-cart-shopping"></i> Total: $
+          <i className="fa-solid fa-cart-shopping"></i> Total: $
           {total.toLocaleString("es-CL")}
         </button>
       </div>
