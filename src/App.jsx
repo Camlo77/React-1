@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
-import Home from "./components/Home";
+// import Home from "./components/Home";
 // import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 // import Register from "./components/Register";
@@ -16,8 +16,8 @@ function App() {
   return (
     <>
       <Navbar total={total} />
-      {/* <Pizza/> */}
-      <Home />
+      <Pizza/>
+      {/* <Home /> */}
       {/* <Register /> */}
       {/* <Login /> */}
       <Cart cart={cart} setCart={setCart} total={total} />
