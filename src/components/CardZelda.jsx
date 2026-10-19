@@ -6,14 +6,10 @@ const CardZelda = ({ name, price, ingredients, img, desc }) => {
         <h5 className="card-title">{name}</h5>
         <hr />
         <p className="card-text small">{desc}</p>
-        <p className="mb-1 fw-bold">
-          <i className="fa-solid fa-shield-halved"></i> Objetos clave:
-        </p>
+        <p className="mb-1 fw-bold">Objetos clave:</p>
         <ul className="list-unstyled text-capitalize">
           {ingredients.map((ingredient) => (
-            <li key={ingredient}>
-              <i className="fa-solid fa-gem"></i> {ingredient}
-            </li>
+            <li key={ingredient}>{ingredient}</li>
           ))}
         </ul>
         <hr />
