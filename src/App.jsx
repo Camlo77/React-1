@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Cart from "./components/Cart";
+import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 // import Home from "./components/Home";
 // import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 // import Register from "./components/Register";
 import { zeldasCart } from "./components/zeldas";
-import Pizza from "./components/Pizza";
+import Pizza from "./pages/Pizza";
 
 function App() {
   const [cart, setCart] = useState(zeldasCart);
