@@ -1,52 +1,33 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar({ total }) {
-  const [token, setToken] = useState(false);
-
   return (
     <nav className="navbar">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           Zelda Store
-        </a>
+        </Link>
 
         <div className="d-flex align-items-center gap-2">
-          <a className="btn btn-outline-secondary" href="#">
+          <Link className="btn btn-outline-secondary" to="/">
             Home
-          </a>
-
-          {token ? (
-            <>
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => setToken(false)}
-              >
-                <i className="fa-solid fa-lock"></i> Logout
-              </button>
-              <a className="btn btn-outline-secondary" href="#">
-                <i className="fa-solid fa-user-lock"></i> Perfil
-              </a>
-            </>
-          ) : (
-            <>
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => setToken(true)}
-              >
-                <i className="fa-solid fa-lock-open"></i> Login
-              </button>
-              <a className="btn btn-outline-secondary" href="#">
-                <i className="fa-solid fa-arrow-right-to-bracket"></i> Register
-              </a>
-            </>
-          )}
+          </Link>
+          <Link className="btn btn-outline-secondary" to="/login">
+            <i className="fa-solid fa-lock-open"></i> Login
+          </Link>
+          <Link className="btn btn-outline-secondary" to="/register">
+            <i className="fa-solid fa-arrow-right-to-bracket"></i> Register
+          </Link>
+          <Link className="btn btn-outline-secondary" to="/profile">
+            <i className="fa-solid fa-user-lock"></i> Perfil
+          </Link>
         </div>
 
-        <button className="btn btn-outline-success ms-auto" type="button">
+        <Link className="btn btn-outline-success ms-auto" to="/cart">
           <i className="fa-solid fa-cart-shopping"></i> Total: $
           {total.toLocaleString("es-CL")}
-        </button>
+        </Link>
       </div>
     </nav>
   );

@@ -1,12 +1,15 @@
 import { useState } from "react";
-import Cart from "./pages/Cart";
+import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
-// import Home from "./components/Home";
-// import Login from "./components/Login";
 import Navbar from "./components/Navbar";
-// import Register from "./components/Register";
 import { zeldasCart } from "./components/zeldas";
+import Cart from "./pages/Cart";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound.jsx";
 import Pizza from "./pages/Pizza";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
 
 function App() {
   const [cart, setCart] = useState(zeldasCart);
@@ -16,11 +19,19 @@ function App() {
   return (
     <>
       <Navbar total={total} />
-      <Pizza/>
-      {/* <Home /> */}
-      {/* <Register /> */}
-      {/* <Login /> */}
-      <Cart cart={cart} setCart={setCart} total={total} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/cart"
+          element={<Cart cart={cart} setCart={setCart} total={total} />}
+        />
+        <Route path="/pizza/p001" element={<Pizza />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Footer />
     </>
   );
