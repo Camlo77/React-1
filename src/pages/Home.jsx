@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import CardZelda from "../pages/CardZelda";
-
+import { CartContext } from "../context/CartContext";
 function Home() {
   const [pizzas, setPizzas] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const getPizzas = async () => {
@@ -28,6 +29,7 @@ function Home() {
               ingredients={pizza.ingredients}
               img={pizza.img}
               desc={pizza.desc}
+              onAdd={() => addToCart(pizza)}
             />
           </div>
         ))}

@@ -1,4 +1,4 @@
-const CardZelda = ({ name, price, ingredients, img, desc }) => {
+const CardZelda = ({ name, price, ingredients, img, desc, onAdd }) => {
   return (
     <div className="card h-100 shadow-sm">
       <img src={img} className="card-img-top" alt={name} />
@@ -18,7 +18,7 @@ const CardZelda = ({ name, price, ingredients, img, desc }) => {
           <button className="btn btn-outline-dark">
             <i className="fa-solid fa-eye"></i> Ver más
           </button>
-          <button className="btn btn-dark"> Añadir</button>
+          <button className="btn btn-dark" onClick={onAdd}> Añadir +</button>
         </div>
       </div>
     </div>
