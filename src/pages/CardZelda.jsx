@@ -1,4 +1,5 @@
-const CardZelda = ({ name, price, ingredients, img, desc, onAdd }) => {
+import { Link } from "react-router-dom";
+const CardZelda = ({ id, name, price, ingredients, img, desc, onAdd }) => {
   return (
     <div className="card h-100 shadow-sm">
       <img src={img} className="card-img-top" alt={name} />
@@ -16,9 +17,13 @@ const CardZelda = ({ name, price, ingredients, img, desc, onAdd }) => {
         <h5>Precio: ${price.toLocaleString("es-CL")}</h5>
         <div className="d-flex justify-content-between mt-3">
           <button className="btn btn-outline-dark">
-            <i className="fa-solid fa-eye"></i> Ver más
+            <i className="fa-solid fa-eye"></i>
+            <Link to={`/pizza/${id}`}>Ver más</Link>
           </button>
-          <button className="btn btn-dark" onClick={onAdd}> Añadir +</button>
+          <button className="btn btn-dark" onClick={onAdd}>
+            {" "}
+            Añadir +
+          </button>
         </div>
       </div>
     </div>
