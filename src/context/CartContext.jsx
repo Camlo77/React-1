@@ -2,9 +2,12 @@ import { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
+
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+  const clearCart = () => setCart([]);
+  
   const addToCart = (product) => {
     const exists = cart.find((item) => item.id === product.id);
     if (exists) {
@@ -40,7 +43,7 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, increase, decrease, total }}
+      value={{ cart, addToCart, increase, decrease, total, clearCart }}
     >
       {children}
     </CartContext.Provider>
