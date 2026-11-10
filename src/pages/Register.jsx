@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const Register = () => {
+  const { register } = useContext(UserContext);
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [exito, setExito] = useState("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const validarDatos = (e) => {
+  const validarDatos = async (e) => {
     e.preventDefault();
     setError("");
-    setExito("");
 
     if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
       setError("Todos los campos son obligatorios");
@@ -33,13 +35,18 @@ const Register = () => {
       return;
     }
 
-    setExito("¡Registro exitoso!");
+    try {
+      await register(email, password);
+      navigate("/profile");
+    } catch (err) {
+      setError(err.message);
+    }
   };
+
   return (
     <>
       <form onSubmit={validarDatos}>
         {error ? <div className="alert alert-danger">{error}</div> : null}
-        {exito ? <div className="alert alert-success">{exito}</div> : null}
 
         <label>Email</label>
         <input
@@ -51,6 +58,15 @@ const Register = () => {
         />
 
         <label>Contraseña</label>
+        <input
+          type="password"
+          name="password"
+          className="form-control"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+
+        <label>Confirmar contraseña</label>
         <input
           type="password"
           name="password"
