@@ -1,67 +1,46 @@
-import { useState } from 'react';
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { login } = useContext(UserContext);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const [error, setError] = useState('');
-  const [exito, setExito] = useState('');
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const validarDatos = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setError('');
-    setExito('');
-
-    if (!email.trim() || !password.trim()) {
-      setError('Todos los campos son obligatorios');
-      return;
+    try {
+      await login(email, password);
+      navigate("/profile");
+    } catch (err) {
+      setError(err.message);
     }
-
-    if (!emailRegex.test(email)) {
-      setError('El email no tiene un formato valido');
-      return;
-    }
-
-    if (password.length < 6) {
-      setError('La contraseña debe tener al menos 6 caracteres');
-      return;
-    }
-
-    setExito('Login exitoso!');
   };
 
   return (
-    <>
-      <form onSubmit={validarDatos}>
-        {error ? <div className="alert alert-danger">{error}</div> : null}
-        {exito ? <div className="alert alert-success">{exito}</div> : null}
-
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          className="form-control"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-
-        <label>Contraseña</label>
-        <input
-          type="password"
-          name="password"
-          className="form-control"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-
-        <button type="submit" className="btn btn-primary">
-          Enviar
-        </button>
-      </form>
-    </>
+    <form className="container my-4" onSubmit={handleSubmit}>
+      <h2>Login</h2>
+      <input
+        type="email"
+        className="form-control mb-2"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        className="form-control mb-2"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      {error && <p className="text-danger">{error}</p>}
+      <button className="btn btn-dark" type="submit">
+        Ingresar
+      </button>
+    </form>
   );
 };
 
